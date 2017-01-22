@@ -1,7 +1,7 @@
 module.exports = {
     entry: './main.js',
     output: {
-        path: __dirname + '/build/',
+        path: __dirname,
         filename: 'build.js'
     },
     module: {
@@ -13,6 +13,17 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue'
+            },
+            {
+                test: /\.css$/,
+                loader: "style!css"
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url',
+                query: {
+                    limit: 10000
+                }
             }
         ]
     },
