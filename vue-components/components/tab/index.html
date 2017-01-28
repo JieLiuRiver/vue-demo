@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选项卡组件</title>
+</head>
+<link rel="stylesheet" href="../../iview.css">
+<style>
+  .component-wrapper{
+    width: 1200px;
+    min-height: 800px;
+    position: absolute;
+    left: calc( 50% - 610px );
+    top: 60px;
+    border: 10px solid #e5e5e5;
+    text-align: center;
+    padding: 50px 30px;
+  }
+  .w{
+    width: 100%;
+  }
+  .show{
+    display: block;
+    opacity:1;
+  }
+  .hide{
+    display: block;
+    opacity:0;
+  }
+  .showbar-transition{
+    transition: .5s all;
+    opaicty: 1;
+    diaplay: block;
+  }
+  .showbar-enter,
+  .showbar-leave{
+    display:none;
+    opacity: 0;
+  }
+  .j-btn{
+  }
+  .condition-wrapper{
+    height: 30px;
+    position:relative;
+    margin-bottom: 20px;
+  }
+
+</style>
+<body>
+    <div class="component-wrapper">
+
+      <div class="condition-wrapper">
+            <button type="button" class="j-btn" @click="addTab">新增</button>
+            类型
+            <select name="" id="" @change="changetype($event)" v-el:typeselect>
+              <option value='line'>线条</option>
+              <option value="card">卡片</option>
+            </select>
+      </div>
+
+      <j-tab
+        :activekey='1'
+        :animated='true'
+        closable
+        :type="tabtype"
+        clickevent="tab-click"
+        removevent="tab-remove">
+          <j-tab-pane v-for="t in testlist" :label="t.label" :key="t.key" ><h1>{{t.tabcontent}}</h1></j-tab-pane>
+      </j-tab>
+
+    </div>
+
+    <script type="text/x-template" id="tabs-tpl">
+      <div
+        class="ivu-tabs"
+              :class="navTypeClass()">
+            <div class="ivu-tabs-bar">
+                  <div class="ivu-tabs-nav-container">
+                      <div class="ivu-tabs-nav-wrap">
+                          <div class="ivu-tabs-nav-scroll">
+                              <div class="ivu-tabs-nav">
+
+                                  <div class="ivu-tabs-tab" v-for="item in navlist" data-index="{{item.id}}"
+                                       :class="itemclass(item)"
+                                       @click="handleChangeTab($event, item, $index)"
+                                       v-el:navitem>
+                                        <i v-if="item.icon !== ''" class="ivu-icon" :class="item.icon"></i>
+                                        {{ item.navname }}
+                                        <div class="ivu-tabs-ink-bar ivu-tabs-ink-bar-animated w" transition="showbar"
+                                             :class="controllerBarClass(item)"></div>
+                                        <i v-if="showClose(item)" class="ivu-icon ivu-icon-ios-close-empty" @click="removeItem($index)"></i>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+            </div>
+
+            <div class="ivu-tabs-content ivu-tabs-content-animated"
+                 :style="contentStyle">
+              <slot></slot>
+            </div>
+
+      </dvi>
+    </script>
+
+      <script type="text/x-template" id="pane-tpl">
+          <div
+            class="ivu-tabs-tabpane"
+            v-show="show">
+              <slot></slot>
+          </div>
+      </script>
+
+    <script src="../../vue.min.js"></script>
+    <script>
+
+        var jTabPane = Vue.component('jTabPane', {
+          template: "#pane-tpl",
+          name: "pane",
+          componentName: 'pane',
+          props: {
+              label: {
+                type: [String, Number],
+                default: '标签1'
+              },
+              key: {
+                type: [String, Number]
+              }
+          },
+          methods: {
+            updatenav: function(){
+              this.$parent.updatenav({
+                navname: this.label,
+                disabled: false,
+                icon: "",
+                id: this.key
+              });
+            }
+          },
+          data: function(){
+            return {
+              show: true
+            }
+          },
+          ready: function(){
+            this.updatenav();
+          }
+        });
+
+        var jTab = Vue.component('jTab',{
+          template: "#tabs-tpl",
+          name: 'jTab',
+          componentName: 'jTab',
+          props: {
+              activekey: {   // 当前高亮
+                type: [String, Number],
+                default: 1
+              },
+              clickevent:{
+                  type: String,
+                  default: 'tab-click'
+              },
+              removevent: {
+                  type: String,
+                  default: 'tab-remove'
+              },
+              type: {
+                type: String,  //类型
+                default: 'line'
+              },
+              animated: {    //是否动画
+                type: Boolean,
+                default: true
+              },
+              closable: {
+                type: Boolean,
+                default: null
+              }
+          },
+          ready: function(){
+              this.computedActiveIndex();
+          },
+          data: function(){
+            return {
+                barOffset: 0,
+                barWidth: 0,
+                activeIndex: 0,
+                navlist: []
+            }
+          },
+          computed: {
+              contentStyle: function(){
+                var style = {
+                  transform : "translate3d(-"+ this.activeIndex*100 +"%, 0, 0)"
+                };
+                if (this.animated) {  //如果要动画
+                  style.transition = '.5s all ease-in-out';
+                }else{  //如果不要动画
+                  style.transition = 'none';
+                }
+                return style;
+              }
+          },
+          events: {
+              'finish-delete': function(index){  // 监听到完成删除的广播事件
+                  if (index > 0) {  // 如果删除的不是第一个
+                    this.activekey = this.navlist[index-1]['id'];  // 设置activekey
+                    this.itemclass(this.navlist[index-1]);
+                  } else if (index === 0){  // 如果删除的是第一个
+                    this.activekey = this.navlist[0]['id'];
+                    this.itemclass(this.navlist[0]);
+                  }
+              }
+          },
+          methods: {
+             computedActiveIndex: function(){    // 计算当前tab索引
+               for (var i = 0; i < this.navlist.length; i++) {
+                   if( this.navlist[i]['id'] === this.activekey ){  // 如果id 等于activekey，则为当前tab
+                     this.activeIndex = i;
+                   }
+               }
+              },
+              showClose: function(item){     // 控制关闭的显隐
+                  if (this.closable != null) {
+                      return true;
+                  }else{
+                    return false;
+                  }
+              },
+              removeItem: function(index){  // 点击删除事件
+                  this.navlist.splice(index , 1);
+                  this.$dispatch(this.removevent, index);  // 派发一个事件
+              },
+              navTypeClass: function(){  // 控制类型的类
+                  return [
+                    {
+                      'ivu-tabs-card': this.type === 'card'
+                    }
+                  ];
+              },
+              updatenav: function(item){  // 收集pane数据
+                  this.navlist.push({
+                    navname: item.navname,
+                    disabled: item.disabled,
+                    icon: item.icon,
+                    id: item.id
+                  });
+              },
+              handleChangeTab: function(e, item, index){  //切换tab动作
+                  if (item.disabled) {
+                    return;
+                  }
+                  this.activekey = item.id;
+                  this.computedActiveIndex();
+                  this.controllerBarClass(item);
+                  this.$dispatch(this.clickevent, item);
+              },
+              itemclass: function(item){
+                return [
+                  {
+                    'ivu-tabs-tab-active': item.id === this.activekey
+                  }
+                ]
+              },
+              controllerBarClass: function(item){  // 控制bar显隐
+                return [
+                  {
+                    'show':  item.id == this.activekey
+                  },
+                  {
+                    'hide': item.id != this.activekey
+                  }
+                ]
+              }
+          }
+        });
+
+        /************* 实例化 *******************/
+        new Vue({
+          el: 'body',
+          data: function(){
+            return {
+                tabtype: {
+                  type: String,
+                  default: 'line'
+                },
+                testlist: [
+                  {
+                    tabcontent: '标签A内容',
+                    label: '标签A',
+                    key: 1
+                  },
+                  {
+                    tabcontent: '标签B内容',
+                    label: '标签B',
+                    key: 2
+                  },
+                  {
+                    tabcontent: '标签C内容',
+                    label: '标签C',
+                    key: 3
+                  },
+                  {
+                    tabcontent: '标签D内容',
+                    label: '标签D',
+                    key: 4
+                  }
+                ]
+            }
+          },
+          components: {
+            jTab: jTab,
+            jTabPane: jTabPane
+          },
+          methods: {
+              finishDelete: function(index){
+                this.$broadcast('finish-delete',index);  // 发起一个完成删除的广播事件
+              },
+              addTab: function(){
+                if (this.testlist.length >= 10) {
+                  alert('好了，够了');
+                  return;
+                }
+                var key = this.testlist[this.testlist.length-1]['key'] + 1;
+                this.testlist.push({
+                  tabcontent: '新标签'+ key,
+                  label: '新标签'+ key,
+                  key: key
+                });
+              },
+              changetype: function(e){
+                this.tabtype = e.srcElement.value;
+              }
+          },
+          events: {
+            'tab-remove': function(index){  // 监听删除item事件
+               this.testlist.splice(index, 1);  // 删除动作
+               this.finishDelete(index);    // 执行完成删除后的函数
+               alert('移除第 '+ (index+1)+'个tab');
+            },
+            'tab-click': function(item){
+                alert('选中tab: '+item.navname);
+            }
+          }
+        });
+    </script>
+</body>
+</html>
