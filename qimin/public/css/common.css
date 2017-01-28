@@ -1,0 +1,82 @@
+body {
+  font-size: 13px;
+  line-height: 1.6;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Hiragino Sans GB W3", "Source Han Sans", "Noto Sans CJK Sc", "Microsoft YaHei", "Microsoft Jhenghei", "Avenir", "Helvetica Neue", "Arial", sans-serif;
+  color: #424243;
+  background-color: #e2e2e2 !important;
+  font-weight: 300;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.f-pr {
+  position: relative;
+}
+
+.f-h {
+  height: 100%;
+}
+
+.f-w {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.f-fl {
+  float: left;
+}
+
+.f-fr {
+  float: right;
+}
+
+.f-pa {
+  position: absolute !important;
+}
+
+.f-ib {
+  display: inline-block;
+}
+
+.h30 {
+  height: 30px;
+  line-height: 30px;
+}
+
+.img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.f-mr10 {
+  margin-right: 10px;
+}
+
+.f-m0 {
+  margin: 0;
+}
+
+.f-tc {
+  text-align: center;
+}
+
+.text-ellipsis {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
