@@ -105,13 +105,13 @@
 </script>
 <style scoped>
   .bloginfo-wrapper {}
-  
+
   .bloginfo-container {
     max-width: 1180px;
     padding: 0 30px;
     margin: 0 auto;
   }
-  
+
   .bloginfo-title {
     margin-top: 32px;
     margin-bottom: 32px;
@@ -120,11 +120,11 @@
     line-height: 22px;
     min-height: 22px;
   }
-  
+
   .bloginfo-group {
     margin-bottom: 50px;
   }
-  
+
   .bloginfo-item {
     height: 560px;
     padding: 45px;
@@ -133,24 +133,24 @@
     border-color: rgb(211, 211, 211);
     border-image: initial;
   }
-  
+
   .bloginfo-left {
     padding-right: 30px;
     height: 100px;
     width: 50%;
   }
-  
+
   .bloginfo-right {
     height: 460px;
     width: 50%;
     overflow: hidden;
   }
-  
+
   .bloginfo-article-title {
     margin-bottom: 80px;
     height: 105px;
   }
-  
+
   .bloginfo-date {
     font-size: 16px;
     line-height: 16px;
@@ -159,7 +159,7 @@
     font-weight: normal;
     margin-bottom: 10px;
   }
-  
+
   .bloginfo-name {
     font-size: 30px;
     line-height: 40px;
@@ -169,7 +169,7 @@
     color: rgb(66, 66, 67);
     margin-bottom: 12px;
   }
-  
+
   .bloginfo-author {
     font-size: 16px;
     font-weight: normal;
@@ -178,7 +178,7 @@
     padding-bottom: 20px;
     border-bottom: 1px solid #555;
   }
-  
+
   .bloginfo-article-p {
     height: 168px;
     font-size: 16px;
@@ -188,35 +188,35 @@
     word-spacing: 4px;
     color: rgb(66, 66, 67);
   }
-  
+
   .read-more {
     height: 40px;
   }
-  
+
   .read-more-btn {
     width: 140px;
     height: 100%;
     border: 1px solid rgb(66, 66, 67);
     background-color: #e2e2e2;
   }
-  
+
   .read-more-btn:hover {
     background: #555;
     color: #fff;
   }
-  
+
   .bloginof-img {
-    background-image: url("../../../public/images/blog_1.jpg");
+    background-image: url("http://heliujie.com/public/works/qimin/public/images/blog_1.jpg");
     overflow: hidden;
     transition: 2s all cubic-bezier(0.075, 0.82, 0.165, 1);
   }
-  
+
   .bloginof-img2 {
-    background-image: url("../../../public/images/blog_2.jpg");
+    background-image: url("http://heliujie.com/public/works/qimin/public/images/blog_2.jpg");
     overflow: hidden;
     transition: 2s all cubic-bezier(0.075, 0.82, 0.165, 1);
   }
-  
+
   .bloginof-img:hover,
   .center-img2:hover,
   .center-img:hover {
@@ -224,11 +224,11 @@
     -webkit-transform: scale(1.06);
     -moz-transform: scale(1.06);
   }
-  
+
   .bloginfo-center-group {
     margin-bottom: 50px;
   }
-  
+
   .bloginfo-center-left,
   .bloginfo-center-right {
     min-height: 700px;
@@ -239,17 +239,17 @@
     border-color: rgb(211, 211, 211);
     border-image: initial;
   }
-  
+
   .center-img {
     transition: 2s all cubic-bezier(0.075, 0.82, 0.165, 1);
     height: 453.1px;
-    background-image: url(../../../public/images/blog_3.jpg);
+    background-image: url(http://heliujie.com/public/works/qimin/public/images/blog_3.jpg);
   }
-  
+
   .center-img2 {
     transition: 2s all cubic-bezier(0.075, 0.82, 0.165, 1);
     height: 453.1px;
-    background-image: url(../../../public/images/blog_4.jpg);
+    background-image: url(http://heliujie.com/public/works/qimin/public/images/blog_4.jpg);
   }
 
 </style>

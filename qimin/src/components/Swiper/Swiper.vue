@@ -2,13 +2,13 @@
   <div class="swiper-container f-pr" @mouseenter="stopSwiperRun" @mouseleave="startSwiperRun">
     <ul class="swiper-list f-m0 f-h clearfix" :style="swiperanimate()" v-el:swiper-list-hook>
       <li class="swiper-item f-h f-fl">
-        <img src="../../../public/images/swiper-1.jpg" alt="" width="100%" height="100%">
+        <img src="http://heliujie.com/public/works/qimin/public/images/swiper-1.jpg" alt="" width="100%" height="100%">
       </li>
       <li class="swiper-item f-h f-fl">
-        <img src="../../../public/images/swiper-2.jpg" alt="" width="100%" height="100%">
+        <img src="http://heliujie.com/public/works/qimin/public/images/swiper-2.jpg" alt="" width="100%" height="100%">
       </li>
       <li class="swiper-item f-h f-fl">
-        <img src="../../../public/images/swiper-1.jpg" alt="" width="100%" height="100%">
+        <img src="http://heliujie.com/public/works/qimin/public/images/swiper-1.jpg" alt="" width="100%" height="100%">
       </li>
     </ul>
     <ul class="swiper-dots-list f-pa f-tc f-m0">
@@ -87,29 +87,29 @@
     height: 704px;
     overflow: hidden;
   }
-  
+
   .swiper-list {
     width: 3420px;
     transition: 1s all ease;
   }
-  
+
   .swiper-item {
     width: 1140px;
   }
-  
+
   .swiper-dots-list {
     width: 100%;
     height: 25px;
     left: 0;
     bottom: 0px;
   }
-  
+
   .swiper-dots-item {
     width: 20px;
     height: 20px;
     cursor: pointer;
   }
-  
+
   .swiper-dot {
     font-size: 0;
     line-height: 0;
@@ -119,7 +119,7 @@
     border: 0;
     border-radius: 5px;
   }
-  
+
   .swiper-dots-item .active {
     background-color: rgba(0, 0, 0, .8)
   }

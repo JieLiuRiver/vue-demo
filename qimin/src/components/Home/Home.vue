@@ -5,7 +5,7 @@
         <div class="f-tc site-header">
           <div class="home-header clearfix">
             <div class="home-logo f-fl">
-              <img src="../../../public/images/home-logo.png" width="100%" height="100%" alt="">
+              <img src="http://heliujie.com/public/works/qimin/public/images/home-logo.png" width="100%" height="100%" alt="">
             </div>
             <div class="home-nav f-fr f-ib">
               <v-nav></v-nav>
@@ -83,40 +83,40 @@
   @import '../../../public/css/iview.css';
   @import '../../../public/css/bootstrap.css';
   .home-wrapper {}
-  
+
   .site-header {
     padding: 15px 0;
   }
-  
+
   .home-header {
     max-width: 1200px;
     padding: 0 30px;
     margin: 0 auto;
     height: 70px;
   }
-  
+
   .home-logo {
     height: 45px;
     width: 98px;
   }
-  
+
   .nav-fixed {
     position: fixed;
     left: 0;
     top: 0;
     background-color: #000;
   }
-  
+
   .nav-fixed-container {
     padding: 0 30px;
     max-width: 1200px;
     margin: 0 auto;
   }
-  
+
   .home-nav {
     min-width: 500px;
   }
-  
+
   .nav-item {
     font-weight: 500;
     display: block;
@@ -125,32 +125,32 @@
     white-space: nowrap;
     color: #424243;
   }
-  
+
   .nav-link-fixed {
     color: #fff;
     font-weight: bold;
   }
-  
+
   .nav-logo-text {
     padding: 16px 10px;
     color: #fff;
     font-size: 16px;
   }
-  
+
   .uptodown-transition {
     transition: .4s all;
     transform: translate3d(0, 0, 0);
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
   }
-  
+
   .uptodown-enter,
   .uptodown-leave {
     transform: translate3d(0, -100%, 0);
     -webkit-transform: translate3d(0, -100%, 0);
     -moz-transform: translate3d(0, -100%, 0);
   }
-  
+
   .swiper-wrapper {
     width: 1140px;
     margin: 0 auto;

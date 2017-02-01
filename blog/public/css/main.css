@@ -1,0 +1,31 @@
+body{
+  background-color: #e5e5e5;
+}
+.f-pr{
+  position: relative;
+}
+.f-h{
+  height: 100%;
+}
+.f-w{
+  width: 100%;
+}
+.f-fl{
+  float: left;
+}
+.f-pa{
+  position: absolute !important;
+}
+.f-ib{
+  display: inline-block;
+}
+.h30{
+  height: 30px;
+  line-height: 30px;
+}
+.f-m0{
+  margin: 0;
+}
+.f-tc{
+  text-align: center;
+}
