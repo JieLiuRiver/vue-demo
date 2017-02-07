@@ -23,12 +23,32 @@
           <span class="f-ib f-w f-h f-tc">{{navItem.navname}}</span>
         </swiper-slide>
       </swiper>
+      <blank-img :url="blankUrl_1"></blank-img>
+      <product-type :title="productImg_1.title" :url="productImg_1.url" :name="productImg_1.name" :times="10"></product-type>
+      <blank-img :url="blankUrl_1"></blank-img>
+      <product-type :title="productImg_2.title" :url="productImg_2.url" :name="productImg_2.name" :times="4"></product-type>
+      <blank-img :url="blankUrl_1"></blank-img>
+      <product-type :title="productImg_3.title" :url="productImg_3.url" :name="productImg_3.name" :times="11"></product-type>
+      <blank-img :url="blankUrl_1"></blank-img>
+      <product-type :title="productImg_4.title" :url="productImg_4.url" :name="productImg_4.name" :times="26"></product-type>
+      <blank-img :url="blankUrl_1"></blank-img>
+      <product-type :title="productImg_5.title" :url="productImg_5.url" :name="productImg_5.name" :times="8"></product-type>
+      <blank-img :url="blankUrl_1"></blank-img>
+      <product-type :title="productImg_6.title" :url="productImg_6.url" :name="productImg_6.name" :times="15"></product-type>
+      <blank-img :url="blankUrl_1"></blank-img>
+      <product-type :title="productImg_7.title" :url="productImg_7.url" :name="productImg_7.name" :times="2"></product-type>
+      <blank-img :url="blankUrl_1"></blank-img>
+      <product-type :title="productImg_8.title" :url="productImg_8.url" :name="productImg_8.name" :times="3"></product-type>
+      <blank-img :url="blankUrl_1"></blank-img>
+
       <tabbar></tabbar>
     </div>
 </template>
 <script type="text/ecmascript-6">
   import {setHtmlSize} from 'common/js/utils'
   import tabbar from 'components/Tabbar/Tabbar'
+  import blankImg from 'components/BlankImg/BlankImg'
+  import productType from 'components/ProductType/ProductType'
   import $ from 'jquery'
 
 
@@ -86,15 +106,89 @@
       },
       mySwiper() {
         return this.$refs.mySwiperA.swiper
+      },
+      blankUrl_1() {
+        return this.blankUrl[0]
+      },
+      productImg_1() {
+        return this.productImgUrl[0]
+      },
+      productImg_2() {
+        return this.productImgUrl[1]
+      },
+      productImg_3() {
+        return this.productImgUrl[2]
+      },
+      productImg_4() {
+        return this.productImgUrl[3]
+      },
+      productImg_5() {
+        return this.productImgUrl[4]
+      },
+      productImg_6() {
+        return this.productImgUrl[5]
+      },
+      productImg_7() {
+        return this.productImgUrl[6]
+      },
+      productImg_8() {
+        return this.productImgUrl[7]
       }
     },
     components: {
-      tabbar
+      tabbar,
+      blankImg,
+      productType
     },
     data() {
       return {
         itemWidth: -1,
         navListData: this.$store.state.categoryData.navListData,
+        blankUrl: [
+          'http://heliujie.com.img.800cdn.com/public/images/mi/category/blankimg-1.png'
+        ],
+        productImgUrl: [
+          {
+            url: 'http://heliujie.com.img.800cdn.com/public/images/mi/category/product-1.png',
+            name: '小米MIX',
+            title: '手机·电话卡'
+          },
+          {
+            url: 'http://heliujie.com.img.800cdn.com/public/images/mi/category/product-2.png',
+            name: '笔记本13.3"',
+            title: '笔记本·平板'
+          },
+          {
+            url: 'http://heliujie.com.img.800cdn.com/public/images/mi/category/product-3.png',
+            name: '小米电视48"',
+            title: '电视·盒子'
+          },
+          {
+            url: 'http://heliujie.com.img.800cdn.com/public/images/mi/category/product-4.png',
+            name: '九号平衡车',
+            title: '智能硬件·路由器'
+          },
+          {
+            url: 'http://heliujie.com.img.800cdn.com/public/images/mi/category/product-5.png',
+            name: '头戴式耳机',
+            title: '耳机·音箱·存储卡'
+          },
+          {
+            url: 'http://heliujie.com.img.800cdn.com/public/images/mi/category/product-6.png',
+            name: '背包',
+            title: '小米生活方式'
+          },
+          {
+            url: 'http://heliujie.com.img.800cdn.com/public/images/mi/category/product-7.png',
+            name: '保护套/保护壳',
+            title: '保护类配件'
+          },
+          {
+            url: 'http://heliujie.com.img.800cdn.com/public/images/mi/category/product-8.png',
+            name: '电源套装',
+            title: '优惠套装'
+          }
+        ],
         swiperOption: {
           notNextTick: true,
           slidesPerView: 3,
@@ -126,6 +220,7 @@
   @import "../../common/css/base.styl"
 
   .category-wrapper
+    r1(margin-bottom, 50)
     .header
       r1(height, 44)
       background-color: #f2f2f2
@@ -159,4 +254,5 @@
           font-weight: 400
         &.active
           color: #fb7d34
+
 </style>
