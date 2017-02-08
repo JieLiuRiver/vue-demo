@@ -129,47 +129,56 @@ const state = {
       {
           navname: '手机·电话卡',
           id: 1,
-          active: true
+          active: true,
+          hash: 'phone'
       },
       {
         navname: '笔记本·平板',
         id: 2,
-        active: false
+        active: false,
+        hash: 'computor'
       },
       {
         navname: '电视·盒子',
         id: 3,
-        active: false
+        active: false,
+        hash: 'tv'
       },
       {
         navname: '智能硬件·路由器',
         id: 4,
-        active: false
+        active: false,
+        hash: 'smart'
       },
       {
         navname: '移动电源·插线板·电池',
         id: 5,
-        active: false
+        active: false,
+        hash: 'source'
       },
       {
         navname: '耳机·音箱·存储卡',
         id: 6,
-        active: false
+        active: false,
+        hash: 'ear'
       },
       {
         navname: '小米生活方式',
         id: 7,
-        active: false
+        active: false,
+        hash: 'live'
       },
       {
         navname: '保护类配件',
         id: 8,
-        active: false
+        active: false,
+        hash: 'protect'
       },
       {
         navname: '优惠套装',
         id: 9,
-        active: false
+        active: false,
+        hash: 'cheap'
       }
     ]
   }

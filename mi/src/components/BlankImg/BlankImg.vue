@@ -1,9 +1,11 @@
 <template>
     <div class="blank-img-wrapper">
       <div class="blank"></div>
-      <div class="img f-w">
-        <img :src="url" width="100%" height="100%">
-      </div>
+      <a href="javascript:;" class="f-ib f-w">
+        <div class="img f-w">
+          <img :src="url" width="100%" height="100%">
+        </div>
+      </a>
       <div class="blank"></div>
     </div>
 </template>
@@ -15,11 +17,12 @@
         r1(height, 8)
         width: 100%
         background-color: #f5f5f5
-      .img
+      a
         r1(height, 104)
-        border: 0
+        .img
+          border: 0
 </style>
-<script type="text/ecmascript-6">
+<script>
   export default{
     props: {
       url: {

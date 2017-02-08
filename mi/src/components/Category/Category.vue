@@ -18,9 +18,11 @@
           <!--</li>-->
         <!--</ul>-->
       <!--</div>-->
-      <swiper :options="swiperOption" class="list-nav-wrapper f-w" ref="mySwiperA">
-        <swiper-slide class="nav-item f-h f-ib" v-for="navItem in navListData">
-          <span class="f-ib f-w f-h f-tc">{{navItem.navname}}</span>
+      <swiper :options="swiperOption" class="list-nav-wrapper f-w" v-ref:swiper-container :class="fixNavClass">
+        <swiper-slide class="nav-item f-h f-ib" v-for="navItem in navListData" :class="{'active': navItem.active}" @click="changeNavItem(navItem, $index)">
+          <a href="javascript:;" class="f-ib f-w f-h f-tc">
+            <span class="f-ib f-w f-h f-tc ">{{navItem.navname}}</span>
+          </a>
         </swiper-slide>
       </swiper>
       <blank-img :url="blankUrl_1"></blank-img>
@@ -88,24 +90,72 @@
         }
         this.itemWidth = _width
       },
-      _initScroll() {
-          this.scroll = new BScroll(this.$els.test, {click: true})
-          if (!this.navScroll) {
-            this.navScroll = new BScroll(this.$els.navWrapperHook, {
-               click: true,
-               scrollY: true
-            })
+      _bindScroll() {
+        $(window).scroll(() => {
+          if ($(window).scrollTop() >= 44) {
+            this.isFixNav = true
           } else {
-            this.navScroll.refresh()
+            this.isFixNav = false
           }
+
+          for (let i = 0; i < this.scrollSectionArray.length; i++) {
+            if ($(window).scrollTop() > this.scrollSectionArray[i] + 100 && $(window).scrollTop() < this.scrollSectionArray[i+1]) {
+              this.navListData.forEach((item) => {
+                item.active = false
+              })
+              this.navListData[i+1]['active'] = true
+              let _scrollDistance = 0
+              for (let k = 0; k < (i+1); k++) {
+                _scrollDistance += $(".nav-item").eq(k).outerWidth()
+              }
+              this.moveNav((i+1), _scrollDistance)
+            }
+            if ($(window).scrollTop() <= this.scrollSectionArray[0]) {
+              this.navListData.forEach((item) => {
+                item.active = false
+              })
+              this.navListData[0]['active'] = true
+              this.moveNav(0, 0)
+            }
+          }
+        })
+      },
+      getScrollSectionArray() {
+        let result = []
+        let $blanks = $('.category-wrapper').find('.blank-img-wrapper')
+        for (let i = 0; i < $blanks.length; i++) {
+          result.push($blanks.eq(i).offset().top)
+        }
+        this.scrollSectionArray = result.slice(0)
+      },
+      moveNav(idx, dis) {
+        if (idx < 7) {
+          $('.swiper-wrapper').css({
+            transition: '.3s all ease'
+          })
+          this.currrentNeedToScrollDistance = Number('-' + dis)
+          this.mySwiper.setWrapperTranslate(this.currrentNeedToScrollDistance)
+        }
+      },
+      changeNavItem(currentItem, idx) {
+        this.navListData.forEach((item) => {
+          item.active = false
+        })
+        currentItem.active = true
+        this.currentActiveNavIndex = currentItem.id - 1
+        let _scrollDistance = 0
+        for (let i = 0; i< idx; i++) {
+          _scrollDistance += $(".nav-item").eq(i).outerWidth()
+        }
+
+        this.moveNav(idx, _scrollDistance)
+        let $blanks = $('.category-wrapper').find('.blank-img-wrapper')
+        $(window).scrollTop($blanks.eq(idx).offset().top - 40)
       }
     },
     computed: {
       navListWidth() {
         return this.itemWidth < 0 ? '1000' : this.itemWidth
-      },
-      mySwiper() {
-        return this.$refs.mySwiperA.swiper
       },
       blankUrl_1() {
         return this.blankUrl[0]
@@ -133,6 +183,15 @@
       },
       productImg_8() {
         return this.productImgUrl[7]
+      },
+      fixNavClass() {
+        return {
+          'fixNav': this.isFixNav,
+          'unFixNav': !this.isFixNav
+        }
+      },
+      mySwiper() {
+        return this.$refs.swiperContainer.swiper
       }
     },
     components: {
@@ -142,8 +201,13 @@
     },
     data() {
       return {
+        isFixNav: false,
         itemWidth: -1,
+        swiper: null,
+        currentActiveNavIndex: 0,
+        scrollSectionArray: [],
         navListData: this.$store.state.categoryData.navListData,
+        currrentNeedToScrollDistance: 0,
         blankUrl: [
           'http://heliujie.com.img.800cdn.com/public/images/mi/category/blankimg-1.png'
         ],
@@ -194,11 +258,14 @@
           slidesPerView: 3,
           freeMode: true,
           onTouchMove(swiper){
-            console.log(swiper.translate)
+            // console.log(swiper.translate)
             // if (swiper.translate <= -570) {
             //   console.log('oo')
             //   swiper.setWrapperTranslate(-570)
             // }
+          },
+          onInit(swiper) {
+
           }
         }
       }
@@ -206,6 +273,8 @@
     created() {
       this.$nextTick(() => {
         this._computedListWidth()
+        this.getScrollSectionArray()
+        this._bindScroll()
       })
     },
     ready() {
@@ -249,10 +318,19 @@
       .nav-item
         r2(padding-left, 10, padding-right, 10)
         margin-right: 0 !important
-        span
+        a
           r2(line-height, 42, font-size, 13)
           font-weight: 400
+          color: #000
         &.active
-          color: #fb7d34
+          a
+            color: #fb7d34
 
+    .fixNav
+      position: fixed
+      left: 0
+      top: 0
+      right: 0
+    .unFixNav
+      position: static
 </style>
