@@ -5,15 +5,17 @@
     },
     data() {
       return {
-        tabs: this.$store.state.homeTabs
+
       }
     },
     computed: {
-
+      tabs() {
+        return this.$store.state.homeTabs
+      }
     },
     methods: {
       changeTab(tabItem) {
-        this.tabs.forEach((item) => {
+        this.$store.state.homeTabs.forEach((item) => {
            item.isSelected = false
         })
         tabItem.isSelected = true

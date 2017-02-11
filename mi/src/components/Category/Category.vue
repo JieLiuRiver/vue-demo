@@ -8,7 +8,9 @@
           <h3 class="f-ib f-h f-w">商品分类</h3>
         </div>
         <div class="right f-fr f-ib" v-link="{name:'search-index'}">
-          <i class="fa fa-search" aria-hidden="true"></i>
+          <div class="f-pa icon-wrapper">
+            <img src="../Search/search.png" width="25" height="25">
+          </div>
         </div>
       </div>
       <!--<div class="list-nav-wrapper f-w" v-el:nav-wrapper-hook>-->
@@ -80,6 +82,7 @@
               tab.isSelected = false
             })
             item.isSelected = true
+            this._bindScroll()
           }
         })
       },
@@ -91,34 +94,43 @@
         this.itemWidth = _width
       },
       _bindScroll() {
+        if ($(window).scrollTop() >= 44) {
+          this.isFixNav = true
+        } else {
+          this.isFixNav = false
+        }
+        this._moveNavCondition()
+
         $(window).scroll(() => {
           if ($(window).scrollTop() >= 44) {
             this.isFixNav = true
           } else {
             this.isFixNav = false
           }
-
-          for (let i = 0; i < this.scrollSectionArray.length; i++) {
-            if ($(window).scrollTop() > this.scrollSectionArray[i] + 100 && $(window).scrollTop() < this.scrollSectionArray[i+1]) {
-              this.navListData.forEach((item) => {
-                item.active = false
-              })
-              this.navListData[i+1]['active'] = true
-              let _scrollDistance = 0
-              for (let k = 0; k < (i+1); k++) {
-                _scrollDistance += $(".nav-item").eq(k).outerWidth()
-              }
-              this.moveNav((i+1), _scrollDistance)
-            }
-            if ($(window).scrollTop() <= this.scrollSectionArray[0]) {
-              this.navListData.forEach((item) => {
-                item.active = false
-              })
-              this.navListData[0]['active'] = true
-              this.moveNav(0, 0)
-            }
-          }
+          this._moveNavCondition()
         })
+      },
+      _moveNavCondition() {
+        for (let i = 0; i < this.scrollSectionArray.length; i++) {
+          if ($(window).scrollTop() > this.scrollSectionArray[i] + 100 && $(window).scrollTop() < this.scrollSectionArray[i+1]) {
+            this.navListData.forEach((item) => {
+              item.active = false
+            })
+            this.navListData[i+1]['active'] = true
+            let _scrollDistance = 0
+            for (let k = 0; k < (i+1); k++) {
+              _scrollDistance += $(".nav-item").eq(k).outerWidth()
+            }
+            this.moveNav((i+1), _scrollDistance)
+          }
+          if ($(window).scrollTop() <= this.scrollSectionArray[0]) {
+            this.navListData.forEach((item) => {
+              item.active = false
+            })
+            this.navListData[0]['active'] = true
+            this.moveNav(0, 0)
+          }
+        }
       },
       getScrollSectionArray() {
         let result = []
@@ -134,7 +146,7 @@
             transition: '.3s all ease'
           })
           this.currrentNeedToScrollDistance = Number('-' + dis)
-          this.mySwiper.setWrapperTranslate(this.currrentNeedToScrollDistance)
+          this.mySwiper && this.mySwiper.setWrapperTranslate(this.currrentNeedToScrollDistance)
         }
       },
       changeNavItem(currentItem, idx) {
@@ -191,7 +203,9 @@
         }
       },
       mySwiper() {
-        return this.$refs.swiperContainer.swiper
+        if (this && this.$refs != null) {
+          return this.$refs.swiperContainer.swiper
+        }
       }
     },
     components: {
@@ -272,14 +286,19 @@
     },
     created() {
       this.$nextTick(() => {
-        this._computedListWidth()
-        this.getScrollSectionArray()
-        this._bindScroll()
+
       })
+    },
+    route: {
+      data(transition) {
+        this._bindScroll()
+      }
     },
     ready() {
       this._initRem()
       this._checkTabbarActiveStatus()
+      this._computedListWidth()
+      this.getScrollSectionArray()
     }
   };
 </script>

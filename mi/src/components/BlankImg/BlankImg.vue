@@ -17,10 +17,13 @@
         r1(height, 8)
         width: 100%
         background-color: #f5f5f5
+        &:nth-of-type(2)
+          margin-top: -2px
       a
         r1(height, 104)
         .img
           border: 0
+          r1(height, 104)
 </style>
 <script>
   export default{

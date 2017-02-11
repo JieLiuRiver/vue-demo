@@ -181,7 +181,12 @@ const state = {
         hash: 'cheap'
       }
     ]
-  }
+  },
+  recommendData: [
+    {
+
+    }
+  ]
 }
 
 const mutations = {

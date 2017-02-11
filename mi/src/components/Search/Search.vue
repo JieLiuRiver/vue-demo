@@ -6,7 +6,9 @@
         </div>
         <div class="search-bar f-ib">
           <div class="link f-h f-pr" v-link="{name:'search-index'}">
-              <i class="f-pa fa fa-search" aria-hidden="true"></i>
+              <div class="f-pa icon-wrapper">
+                <img src="./search.png" width="23" height="23">
+              </div>
               <span class="f-h f-ib f-pa text">搜索商品名称</span>
           </div>
         </div>
@@ -52,6 +54,8 @@
          r1(border-radius, 2)
          background: #fff
          r1(margin-top, 1)
+         .icon-wrapper
+          r2(left, 8, top, 4)
          .text
           r2(left, 40, top, 0)
           r1(line-height, 32)
