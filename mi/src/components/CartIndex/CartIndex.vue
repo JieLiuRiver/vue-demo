@@ -2,14 +2,14 @@
     <div class="cartindex-wrapper">
       <div class="header f-w f-clearfix">
         <div class="left f-fl f-ib" @click="backToIndex">
-          <img src="./icon_back.png" width="100%" height="100%">
+          <img :src="imgUrl.url1" width="100%" height="100%">
         </div>
         <div class="title f-fl f-ib">
           <h3 class="f-ib f-h f-w">购物车</h3>
         </div>
         <div class="right f-fr f-ib" v-link="{name:'search-index'}">
           <div class="f-pa icon-wrapper">
-            <img src="../Search/search.png" width="25" height="25">
+            <img :src="imgUrl.url2" width="25" height="25">
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
           <ul class="f-w">
             <li class="f-ib" v-for="item in 20">
               <div class="img">
-                <img src="./bake.png" width="100%" height="100%">
+                <img :src="bakeUrl" width="100%" height="100%">
               </div>
               <div class="info">
                 <div class="name">红米Note 4 移动定制版</div>
@@ -88,7 +88,7 @@
           r1(line-height, 54)
           font-style: normal
         i
-          background: url(./arrow-right.png) no-repeat
+          background: url(http://heliujie.com.img.800cdn.com/public/images/mi/cart/arrow-right.png) no-repeat
           background-size: cover
           r2(right, 10, top, 16)
           r2(width, 20, height, 20)
@@ -112,7 +112,7 @@
               left: 0
               right: 0
               r2(width,50, height, 40)
-              background: url(./cartnull.png) no-repeat
+              background: url(http://heliujie.com.img.800cdn.com/public/images/mi/cart/cartnull.png) no-repeat
               background-size: contain
           em
             r2(width, 60, height, 26)
@@ -213,7 +213,13 @@
     },
     data() {
       return {
-        recommendData: this.$store.state.recommendData
+        recommendData: this.$store.state.recommendData,
+        imgUrl: {
+          url1: "http://heliujie.com.img.800cdn.com/public/images/mi/category/icon_back.png",
+          url2: "http://heliujie.com.img.800cdn.com/public/images/mi/category/search.png",
+          url3: "http://heliujie.com.img.800cdn.com/public/images/mi/category/logo.png"
+        },
+        bakeUrl: 'http://heliujie.com.img.800cdn.com/public/images/mi/cart/bake.png'
       }
     },
     route: {

@@ -140,7 +140,7 @@
     height: 100%
     background-color: #f5f5f5
     .hd
-      background: url(./bg.png) #f37d0f
+      background: url(http://heliujie.com.img.800cdn.com/public/images/mi/cart/bg.png) #f37d0f
       .user
         r1(height, 50)
         r2(margin-top,15, margin-bottom, 15)
@@ -148,7 +148,7 @@
         .nologin
           r1(flex-basis, 50)
           r1(margin-left, 15)
-          background: url(./avatar.png) no-repeat
+          background: url(http://heliujie.com.img.800cdn.com/public/images/mi/cart/avatar.png) no-repeat
           background-size: contain
         .name
           flex: 1
@@ -169,7 +169,7 @@
           color: rgba(0,0,0,.54)
           r1(font-size, 13)
         .icon-arrow-right
-          background: url(../CartIndex/arrow-right.png) no-repeat
+          background: url(http://heliujie.com.img.800cdn.com/public/images/mi/cart/arrow-right.png) no-repeat
           background-size: contain
           r2(width, 20, height, 20)
           r2(right,10,top,10)
@@ -191,11 +191,11 @@
             width: 100%
             r1(height, 14)
             text-align: center
-          .nav-1
-            background-image: url(./nav-1.png)
-          .nav-2,
+          .nav-1,
+          .nav-2
+            background-image: url(http://heliujie.com.img.800cdn.com/public/images/mi/cart/nav-1.png)
           .nav-3
-            background-image: url(./nav-2.png)
+            background-image: url(http://heliujie.com.img.800cdn.com/public/images/mi/cart/nav-2.png)
     .blank
       r1(height, 8)
       width: 100%

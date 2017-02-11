@@ -2,14 +2,14 @@
     <div class="category-wrapper f-w">
       <div class="header f-w f-clearfix">
         <div class="left f-fl f-ib" @click="backToIndex">
-          <img src="./icon_back.png" width="100%" height="100%">
+          <img :src="imgUrl.url1" width="100%" height="100%">
         </div>
         <div class="title f-fl f-ib">
           <h3 class="f-ib f-h f-w">商品分类</h3>
         </div>
         <div class="right f-fr f-ib" v-link="{name:'search-index'}">
           <div class="f-pa icon-wrapper">
-            <img src="../Search/search.png" width="25" height="25">
+            <img :src="imgUrl.url2" width="25" height="25">
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
       <blank-img :url="blankUrl_1"></blank-img>
       <product-type :title="productImg_5.title" :url="productImg_5.url" :name="productImg_5.name" :times="8"></product-type>
       <blank-img :url="blankUrl_1"></blank-img>
-      <product-type :title="productImg_6.title" :url="productImg_6.url" :name="productImg_6.name" :times="15"></product-type>
+      <product-type :title="productImg_6.title" :ur:srcl="productImg_6.url" :name="productImg_6.name" :times="15"></product-type>
       <blank-img :url="blankUrl_1"></blank-img>
       <product-type :title="productImg_7.title" :url="productImg_7.url" :name="productImg_7.name" :times="2"></product-type>
       <blank-img :url="blankUrl_1"></blank-img>
@@ -281,6 +281,11 @@
           onInit(swiper) {
 
           }
+        },
+        imgUrl: {
+          url1: "http://heliujie.com.img.800cdn.com/public/images/mi/category/icon_back.png",
+          url2: "http://heliujie.com.img.800cdn.com/public/images/mi/category/search.png",
+          url3: "http://heliujie.com.img.800cdn.com/public/images/mi/category/logo.png"
         }
       }
     },

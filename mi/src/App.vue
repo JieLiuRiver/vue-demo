@@ -3,43 +3,40 @@
     <search></search>
     <tabbar></tabbar>
     <swiper class="swiper-component-wrapper" :options="swiperOption">
-      <swiper-slide>
-        <img src="./common/images/swiper_1.png" alt="" width="100%" height="100%">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="./common/images/swiper_2.png" alt="" width="100%" height="100%">
+      <swiper-slide v-for="item in swiperListImgUrl" track-by="$index">
+        <img :src="item" alt="" width="100%" height="100%">
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
     <a href="javascript:void(0)" class="back-to-top f-ib" v-show="isShowBackTop" @click="backToTop">
-      <img src="./common/images/top.png" width="100%" height="100%">
+      <img :src="backToTopUrl" width="100%" height="100%">
     </a>
     <div class="first">
         <div class="first-list">
           <div class="section f-clearfix section-1 f-w">
             <div class="f-fl f-ib f-h section-l">
-              <img src="./common/images/section-1.png" width="100%" height="100%">
+              <img :src="imgUrl1" width="100%" height="100%">
             </div>
             <div class="f-fl f-ib f-h section-r">
               <div class="f-ib section-rt f-w">
-                <img src="./common/images/section-2.png" width="100%" height="100%">
+                <img :src="imgUrl2" width="100%" height="100%">
               </div>
               <div class="f-ib section-rb f-w">
-                <img src="./common/images/section-3.png" width="100%" height="100%">
+                <img :src="imgUrl3" width="100%" height="100%">
               </div>
             </div>
           </div>
           <div class="blank"></div>
           <template v-for="t in 2">
             <div class="section-2 f-w">
-              <img src="./common/images/section-4.png" width="100%" height="100%">
+              <img :src="imgUrl4" width="100%" height="100%">
             </div>
             <div class="blank2"></div>
             <template v-for="item in 3">
               <div class="section f-clearfix section-1 f-w">
                 <div class="f-fl f-ib f-h section-l pr1">
                   <div class="img f-w f-pr">
-                    <img src="./common/images/section-5.png" class="f-pa" width="100%" height="100%">
+                    <img v-lazy="imgUrl5" class="f-pa" width="100%" height="100%">
                   </div>
                   <div class="info">
                     <div class="name">红米Note 4 移动定制版</div>
@@ -49,7 +46,7 @@
                 </div>
                 <div class="f-fl f-ib f-h section-l pl1">
                   <div class="img f-w f-pr">
-                    <img src="./common/images/section-6.png" class="f-pa" width="100%" height="100%">
+                    <img v-lazy="imgUrl6" class="f-pa" width="100%" height="100%">
                   </div>
                   <div class="info">
                     <div class="name">红米4 32GB版</div>
@@ -63,11 +60,11 @@
           <link-more :text="text1"></link-more>
           <div class="blank"></div>
           <div class="section-2 f-w">
-            <img src="./common/images/section-7.png" width="100%" height="100%">
+            <img v-lazy="imgUrl7" width="100%" height="100%">
           </div>
           <div class="section-1 f-clearfix" style="height: auto;">
             <div class="f-fl f-ib section-l f-pr" style="padding-top: 46%;">
-              <img class="f-pa" src="./common/images/section-8.png" width="100%" height="100%" style="left:0; top:0">
+              <img class="f-pa" v-lazy="imgUrl8" width="100%" height="100%" style="left:0; top:0">
             </div>
             <div class="f-fl f-ib section-l f-pr" style="padding-top: 46%;">
               <div class="info2 f-pa f-ib f-w f-h">
@@ -86,12 +83,12 @@
               </div>
             </div>
             <div class="f-fl f-ib section-l f-pr" style="padding-top: 46%;">
-              <img class="f-pa" src="./common/images/section-8.png" width="100%" height="100%" style="left:0; top:0">
+              <img class="f-pa" v-lazy="imgUrl8" width="100%" height="100%" style="left:0; top:0">
             </div>
           </div>
           <div class="section-1 f-clearfix" style="height: auto;">
             <div class="f-fl f-ib section-l f-pr" style="padding-top: 46%;">
-              <img class="f-pa" src="./common/images/section-8.png" width="100%" height="100%" style="left:0; top:0">
+              <img class="f-pa" v-lazy="imgUrl8" width="100%" height="100%" style="left:0; top:0">
             </div>
             <div class="f-fl f-ib section-l f-pr" style="padding-top: 46%;">
               <div class="info2 f-pa f-ib f-w f-h">
@@ -106,10 +103,10 @@
           <template v-for="item in 3">
             <div class="section-3 f-clearfix f-w">
               <div class="f-fl f-h section-item">
-                <img src="./common/images/section-9.png" width="100%" height="100%">
+                <img v-lazy="imgUrl9" width="100%" height="100%">
               </div>
               <div class="f-fl f-h section-item">
-                <img src="./common/images/section-10.png" width="100%" height="100%">
+                <img v-lazy="imgUrl10" width="100%" height="100%">
               </div>
             </div>
           </template>
@@ -187,7 +184,22 @@
             paginationClickable: true,
             loop: true,
             autoplay: 3000
-          }
+          },
+          swiperListImgUrl: [
+            'http://heliujie.com.img.800cdn.com/public/images/mi/index/swiper_1.png',
+            'http://heliujie.com.img.800cdn.com/public/images/mi/index/swiper_2.png'
+          ],
+          imgUrl1: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-1.png',
+          imgUrl2: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-2.png',
+          imgUrl3: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-3.png',
+          imgUrl4: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-4.png',
+          imgUrl5: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-5.png',
+          imgUrl6: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-6.png',
+          imgUrl7: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-7.png',
+          imgUrl8: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-8.png',
+          imgUrl9: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-9.png',
+          imgUrl10: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/section-10.png',
+          backToTopUrl: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/top.png'
       }
     },
     components: {

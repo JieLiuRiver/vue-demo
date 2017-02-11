@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './vuex/store'
 import jApp from './App'
+import VueLazyload from 'vue-lazyload'
 import Category from 'components/Category/Category'
 import CartIndex from 'components/CartIndex/CartIndex'
 import UserIndex from 'components/UserIndex/UserIndex'
@@ -10,6 +11,9 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 Vue.use(VueRouter)
 Vue.use(VueAwesomeSwiper)
+Vue.use(VueLazyload, {
+  error: 'http://heliujie.com.img.800cdn.com/public/images/mi/index/error.png',
+})
 let router = new VueRouter({
   linkActiveClass: 'active'
 })

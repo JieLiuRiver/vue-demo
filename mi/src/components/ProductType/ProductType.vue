@@ -4,7 +4,7 @@
       <div class="box">
         <div class="product" v-for="item in times" track-by="$index">
           <div class="img">
-            <img :src="url" width="100%" height="100%">
+            <img v-lazy="url" width="100%" height="100%">
           </div>
           <div class="name f-tc f-w">{{name}}</div>
         </div>
