@@ -5,7 +5,7 @@
         </div>
         <div class="content-right-innerwrapper f-h">
             <div class="content-detailinfo">
-                <div>{{{currentHtml}}}</div>
+                <div class="content-innercontent">{{{ currentHtml }}}</div> <!-- currentHtml -->
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
                if (this.$store.state.currentDetailData != null) {
                   return _.unescape(this.$store.state.currentDetailData.content)
                }else{
-                  return '没有内容...';
+                  return "<h2 class='f-tc'>Hello Coding Farmer！</h2><div class='f-w'><img width='100%' src='http://heliujie.com.img.800cdn.com/public/images/body.jpg'></div>";
                }
             },
             currentDetailData() {
@@ -33,7 +33,6 @@
             }
         },
         ready() {
-            this.testHtml = _.unescape('&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;h1 style=&quot;border-bottom: 2px solid rgb(204, 204, 204); padding: 0px 4px 0px 0px; margin: 0px 0px 10px;&quot;&gt;&lt;span style=&quot;font-family: consolas;&quot;&gt;&lt;strong&gt;&lt;span style=&quot;font-family: consolas; font-size: 14px;&quot;&gt;1.数组求和');
         }
     }
 </script>
@@ -47,6 +46,55 @@
     .content-detailinfo{
         height: auto;
         padding:50px 20px 10px 20px;
+        font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif !important;
+        color: #555 !important;
+        font-size: 14px !important;
+        line-height: 2 !important;
+    }
+    .content-detailinfo .pre{
+        overflow: auto;
+        margin: 20px 0;
+        padding: 15px;
+        font-size: 14px;
+        color: #4d4d4c;
+        background: #f7f7f7;
+        line-height: 1.6;
+    }
+    .content-detailinfo p{
+      margin: 10px auto;
+      font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #555;
+      font-size: 14px !important;
+      line-height: 2 !important;
+      font-weight: 500 !important;
+    }
+    .content-detailinfo h2{
+      font-size: 20px;
+      margin: 20px 0 15px;
+      font-weight: bold !important;
+      line-height: 1.5 !important;;
+      font-family: 'Roboto Slab', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif !important;;
+    }
+    .content-detailinfo h3{
+      font-size: 18px;
+      margin: 20px 0 15px;
+      font-weight: bold !important;;
+      line-height: 1.5 !important;;
+      font-family: 'Roboto Slab', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif !important;;
+    }
+    .content-detailinfo h4{
+      font-size: 16px;
+      margin: 20px 0 15px;
+      font-weight: bold !important;;
+      line-height: 1.5 !important;;
+      font-family: 'Roboto Slab', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif !important;;
+    }
+    .content-detailinfo h5{
+      font-size: 14px;
+      margin: 20px 0 15px;
+      font-weight: bold !important;;
+      line-height: 1.5 !important;;
+      font-family: 'Roboto Slab', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif !important;;
     }
     .content-title{
         width: 100%;
@@ -63,5 +111,8 @@
         text-align: left;
         text-indent: 10px;
         font-size: 16px;
+    }
+    .content-innercontent{
+      padding: 20px 40px;
     }
 </style>

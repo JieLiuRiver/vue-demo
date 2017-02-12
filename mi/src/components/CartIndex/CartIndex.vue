@@ -107,6 +107,7 @@
             r1(padding-left, 50)
             color: rgba(0,0,0,.27)
             position: relative
+            overflow: hidden
             .icon-cartnull
               position: absolute
               left: 0

@@ -112,6 +112,7 @@
         text-indent: 5px;
         height: 42px;
         line-height: 42px;
+        color: #000;
     }
     .slidebar-item .active{
         color: #fff;

@@ -213,7 +213,8 @@
               .icon
                 background-repeat: no-repeat
                 background-size: cover
-                background: #e2e2e2
+                border: 1px dashed #e2e2e2
+                border-radius: 2px
                 r1(top, -7)
               .icon-sevice
                 i

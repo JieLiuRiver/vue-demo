@@ -1,9 +1,9 @@
 <template>
     <div class="nav-wrapper f-pa f-h">
         <ul class="nav-list clearfix f-w f-h f-m0" v-if="list">
-            <li class="nav-item f-fl f-ib f-h f-pr" v-for="item in list">
-                <a href="javascript:void(0)" class="f-ib f-h f-w" data-id="{{item.navid}}" @click="choseModule($event, item)">{{item.navname}}</a>
-                <i v-if="item.isActive" class="triangle f-pa"></i>
+            <li class="nav-item f-fl f-ib f-h f-pr" v-for="item in list" v-link="{name:item.routename}">
+                <a href="javascript:void(0)" class="f-ib f-h f-w" data-id="{{item.navid}}" @click="choseModule($event, item)" :class="item.className"></a>
+                <!--<i v-if="item.isActive" class="triangle f-pa"></i>-->
             </li>
         </ul>
     </div>
@@ -36,6 +36,9 @@
                         this.slidelistdata[i].falseActive = true;
                     }
                 }
+                if (item.navid == 4) {
+                  window.open(item.url)
+                }
             }
         }
     }
@@ -51,13 +54,30 @@
 
     }
     .nav-item{
+      margin-right: 20px;
     }
     .nav-item a{
-        padding: 0 20px;
+        width: 30px;
+        height: 30px;
         line-height: 48px;
         font-size: 14px;
         color: inherit;
         text-decoration: none;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 8px;
+    }
+    nav-item:nth-of-type(2) a{
+      width: 20px;
+    }
+    .nav-item .works{
+      background-image: url(http://heliujie.com.img.800cdn.com/public/images/works.png)
+    }
+    .nav-item .recommend{
+      background-image: url(http://heliujie.com.img.800cdn.com/public/images/recommend.png)
+    }
+    .nav-item .github{
+      background-image: url(http://heliujie.com.img.800cdn.com/public/images/github.png)
     }
     .nav-item a:hover{
         text-decoration: none;

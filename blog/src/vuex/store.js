@@ -9,17 +9,24 @@ let navlistdata = [
   {
     navname: '作品',
     navid: 1,
-    isActive: false
+    isActive: false,
+    routename: 'j-works',
+    className: 'works'
   },
+  // {
+  //   navname: '评论',
+  //   navid: 3,
+  //   isActive: false,
+  //   routename: '',
+  //   className: 'recommend'
+  // },
   {
-    navname: '评论',
-    navid: 3,
-    isActive: false
-  },
-  {
-    navname: '其他',
+    navname: 'GITHUb',
     navid: 4,
-    isActive: false
+    isActive: false,
+    routename: '',
+    url: 'https://github.com/stupidWall',
+    className: 'github'
   }
 ];
 
@@ -146,7 +153,43 @@ const state = {
   clientHeight: 0,
   slidelistdata: slidelistdata,
   navlistdata: navlistdata,
-  isLoading: false
+  isLoading: false,
+  projectUrlData: [
+    {
+      name: 'QIMIN购物网站-Vue.js',
+      url: 'http://heliujie.com/public/works/qimin/index.html'
+    },
+    {
+      name: '选项卡组件-VueComponent',
+      url: 'http://heliujie.com/public/works/vue-components/components/tab/index.html'
+    },
+    {
+      name: '滚屏网页-原生js',
+      url: 'http://heliujie.com/public/works/scrollpage/index.html'
+    },
+    {
+      name: '分页指令-Angular.js',
+      url: 'http://heliujie.com/public/works/angular/paging/index.html'
+    },
+    {
+      name: '路由应用Demo-Angular.ui.router.js',
+      url: 'http://heliujie.com/public/works/angular/treemenu/index.html#/home/index'
+    }
+  ],
+  projectMobileData: [
+    {
+      name: '仿小米官网-vue.js',
+      queryData: {
+        projectid: 1
+      }
+    },
+    {
+      name: '仿饿了么-vue.js',
+      queryData: {
+        projectid: 2
+      }
+    }
+  ]
 };
 
 const mutations = {
