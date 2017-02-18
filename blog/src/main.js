@@ -6,6 +6,7 @@ import vueResource from 'vue-resource'
 import iView from 'iview'
 import Works from 'components/JackWorks/JackWorks'
 import WorkShowMobile from 'components/WorkShowMobile/WorkShowMobile'
+import AdminShow from 'components/AdminShow/AdminShow'
 
 // 开启调试模式
 Vue.config.debug = true;
@@ -29,6 +30,10 @@ router.map({
   '/show': {
     component: WorkShowMobile,
     name: 'j-workshow'
+  },
+  'admin': {
+    component: AdminShow,
+    name: 'admin'
   }
 })
 

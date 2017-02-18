@@ -157,23 +157,33 @@ const state = {
   projectUrlData: [
     {
       name: 'QIMIN购物网站-Vue.js',
+      route: false,
       url: 'http://heliujie.com/public/works/qimin/index.html'
     },
     {
       name: '选项卡组件-VueComponent',
+      route: false,
       url: 'http://heliujie.com/public/works/vue-components/components/tab/index.html'
     },
     {
       name: '滚屏网页-原生js',
+      route: false,
       url: 'http://heliujie.com/public/works/scrollpage/index.html'
     },
     {
       name: '分页指令-Angular.js',
+      route: false,
       url: 'http://heliujie.com/public/works/angular/paging/index.html'
     },
     {
       name: '路由应用Demo-Angular.ui.router.js',
+      route: false,
       url: 'http://heliujie.com/public/works/angular/treemenu/index.html#/home/index'
+    },
+    {
+      name: '管理系统-Vue.js实现(内嵌路由)',
+      route: true,
+      url: 'admin'
     }
   ],
   projectMobileData: [

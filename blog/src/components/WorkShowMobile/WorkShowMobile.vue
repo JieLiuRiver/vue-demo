@@ -75,7 +75,7 @@
     props: {},
     ready() {
       if (this.$route.query.projectid == 1){
-        this.url = 'http://heliujie.com/public/works/mi/index.html'
+        this.url = 'http://heliujie.com/public/works/xiaomi/index.html'
         this.githubUrl = 'https://github.com/stupidWall/vue-demo/tree/master/mi'
       } else if (this.$route.query.projectid == 2) {
         this.url = 'http://heliujie.com/public/works/mi/index.html'
